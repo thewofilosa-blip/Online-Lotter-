@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promotional Program Launch & Payment</title>
+    <style>
+        :root {
+            --primary-color: #0066cc;
+            --primary-hover: #0052a3;
+            --dark-bg: #111827;
+            --card-bg: #ffffff;
+            --text-main: #1f2937;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f3f4f6;
+            margin: 0;
+            padding: 0;
+            color: var(--text-main);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 20px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr;
+        }
+
+        /* Responsive Desktop Split Layout */
+        @media (min-width: 768px) {
+            .container {
+                grid-template-columns: 1.2fr 1fr;
+            }
+        }
+
+        /* Left Side: Media Promotion Section */
+        .promo-side {
+            background-color: var(--dark-bg);
+            color: #ffffff;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .promo-side h1 {
+            font-size: 2rem;
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .promo-side p {
+            color: #9ca3af;
+            font-size: 1rem;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* Perfect 16:9 Aspect Ratio */
+            height: 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            background: #000;
+        }
+
+        .video-wrapper iframe, 
+        .video-wrapper video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Right Side: Data Input Form */
+        .form-side {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .form-side h2 {
+            font-size: 1.5rem;
+            margin-top: 0;
+            margin-bottom: 5px;
+            color: #111827;
+        }
+
+        .form-side .subtitle {
+            color: #6b7280;
+            font-size: 0.9rem;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #374151;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 0.95rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.15);
+        }
+
+        .submit-btn {
+            width: 100%;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 14px;
+            margin-top: 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: background-color 0.2s;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--primary-hover);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Left Section: Video Content Presentation -->
+    <div class="promo-side">
+        <h1>From Pampering to Madness</h1>
+        <p>Watch the official introduction video below to explore our curriculum framework and program details before registering.</p>
+        
+        <div class="video-wrapper">
+            <!-- Option A: Embedded YouTube/Vimeo Promo Video -->
+            <iframe 
+                src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                title="Promotional Video Player" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+
+            <!-- Option B: Direct self-hosted video upload (Uncomment below if hosting your own MP4) -->
+            <!-- 
+            <video controls poster="thumbnail.jpg">
+                <source src="promo-video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video> 
+            -->
+        </div>
+    </div>
+
+    <!-- Right Section: Interactive Intake Form -->
+    <div class="form-side">
+        <h2>Secure Your Spot</h2>
+        <p class="subtitle">Complete the form below to initiate immediate verification and Telebirr payment processing.</p>
+        
+        <form id="paymentRegistrationForm">
+            <div class="form-group">
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" placeholder="Enter your full name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Telebirr Mobile Number</label>
+                <input type="tel" id="phone" placeholder="09xxxxxxxx" pattern="^(09|07)\d{8}$" title="Please enter a valid Ethiopian phone number starting with 09 or 07" required>
+            </div>
+
+            <div class="form-group">
+                <label for="tierSelect">Select Access Tier</label>
+                <select id="tierSelect">
+                    <option value="standard" data-cost="150">Standard Entry — 150 ETB</option>
+                    <option value="all_access" data-cost="600">VIP Premium Pass — 600 ETB</option>
+                </select>
+            </div>
+
+            <button type="submit" class="submit-btn">Pay securely via Telebirr</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    document.getElementById('paymentRegistrationForm').addEventListener('submit', async (event) => {
+        event.preventDefault();
+        
+        const selection = document.getElementById('tierSelect').selectedOptions[0];
+        const payload = {
+            clientName: document.getElementById('fullName').value,
+            clientPhone: document.getElementById('phone').value,
+            tierSelection: document.getElementById('tierSelect').value,
+            payableAmount: selection.getAttribute('data-cost')
+        };
+
+        try {
+            // Forward verified frontend parameters directly to secure server API routing
+            const apiResponse = await fetch('http://localhost:3000/api/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            const parsedResult = await apiResponse.json();
+            
+            if (parsedResult.toPayUrl) {
+                // Handshake success: Route browser string directly to Telebirr H5 payment instance
+                window.location.href = parsedResult.toPayUrl;
+            } else {
+                alert('Payment initiation failed. Ensure server encryption keys match merchant profile settings.');
+            }
+        } catch (connectionError) {
+            console.error('Network execution failure:', connectionError);
+            alert('Unable to reach backend gateway pipeline. Verify backend application instance configuration.');
+        }
+    });
+</script>
+</body>
+</html>
